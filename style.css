@@ -7,8 +7,11 @@
 
 /* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  /* Use Helvetica Now Display W05 Regular for body */
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  color: #e3a535;
+  background: #ffffff;
   display: flex;
   justify-content: center;
 }
@@ -16,6 +19,7 @@ body {
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  background: #ffffff;
 }
 
 /* header */
@@ -28,6 +32,10 @@ body {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
+  color: #e3a535;
+  /* Use Halesworth eText Bold for main header */
+  font-family: "Halesworth eText Bold", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 /* chat window */
@@ -37,23 +45,32 @@ body {
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
+  border: 1px solid #000000;
   padding: 20px;
   font-size: 18px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: #ffffff;
   white-space: pre-line;
+  /* Use Helvetica Now Display W05 Regular for chat window */
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
 /* messages */
 .msg {
   margin-bottom: 14px;
   line-height: 1.5;
+  /* Use Helvetica Now Display W05 Light for messages */
+  font-family: "Helvetica Now Display W05 Lt", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
 .msg.user {
-  color: #000;
+  color: #000000;
+  /* Use Helvetica Now Display W05 Bold for user messages */
+  font-family: "Helvetica Now Display W05 Bd", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
 .msg.ai {
@@ -70,19 +87,24 @@ body {
 .chat-form input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #e3a535;
   font-size: 18px;
+  background: #ffffff;
+  color: #000000;
+  /* Use Helvetica Now Display W05 Regular for input */
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #e3a535;
   outline-offset: 2px;
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   border: none;
   padding: 12px;
   width: 48px;
@@ -92,6 +114,9 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: background 0.3s;
+  /* Use Halesworth eText Medium for button text */
+  font-family: "Halesworth eText Medium", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .chat-form button .material-icons {
@@ -99,11 +124,12 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #e3a535;
+  color: #000000;
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #e3a535;
   outline-offset: 2px;
 }
 
@@ -125,7 +151,10 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #ff003b;
+  /* Use Halesworth eText Medium for footer */
+  font-family: "Halesworth eText Medium", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .site-footer nav {
@@ -134,10 +163,13 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #e3a535;
   text-decoration: none;
+  /* Use Halesworth eText Bold for links */
+  font-family: "Halesworth eText Bold", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #000000;
 }
