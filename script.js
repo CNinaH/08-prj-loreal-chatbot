@@ -4,13 +4,14 @@ const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
 
 // The Cloudflare Worker endpoint URL
-const workerUrl = "https://tight-rain-6157.ninawark.workers.dev/";
+const workerUrl = "https://loreal-worker.ninawark.workers.dev/";
 
 // Store the chat history for OpenAI-style messages
 const messages = [
   {
     role: "system",
-    content: "You are a helpful assistant for beauty products for L'Oreal.",
+    content:
+      "You are a helpful beauty assistant for L'Oréal products. You specialize in skincare, makeup, haircare, and beauty routines using L'Oréal brands. You can help with product recommendations, beauty tips, ingredient information, and usage advice. If someone asks about topics unrelated to L'Oréal products, beauty, skincare, makeup, or haircare, politely redirect them back to beauty-related topics you can help with.",
   },
 ];
 
@@ -19,25 +20,11 @@ function renderMessages() {
   // Start with an empty string
   let html = "";
 
-  // Show all previous messages as bubbles
-  for (let i = 1; i < messages.length - 1; i++) {
+  // Show all messages (skip the system message at index 0)
+  for (let i = 1; i < messages.length; i++) {
     const msg = messages[i];
     const cls = msg.role === "user" ? "msg user" : "msg ai";
     html += `<div class="${cls}">${msg.content}</div>`;
-  }
-
-  // Show the latest user question above the assistant's reply
-  if (messages.length > 2) {
-    const lastUserMsg = messages[messages.length - 2];
-    const lastAiMsg = messages[messages.length - 1];
-    if (lastUserMsg.role === "user" && lastAiMsg.role === "assistant") {
-      html += `<div class="msg user latest">${lastUserMsg.content}</div>`;
-      html += `<div class="msg ai latest">${lastAiMsg.content}</div>`;
-    }
-  } else if (messages.length === 2) {
-    // Only user message, no assistant reply yet
-    const lastUserMsg = messages[1];
-    html += `<div class="msg user latest">${lastUserMsg.content}</div>`;
   }
 
   chatWindow.innerHTML = html || "👋 Hello! How can I help you today?";
@@ -67,7 +54,7 @@ chatForm.addEventListener("submit", async (e) => {
 
   try {
     // Log the payload being sent for debugging
-    console.log("Sending to worker:", { messages });
+    // console.log("Sending to worker:", { messages });
 
     // Send the messages array to the worker API using fetch
     const response = await fetch(workerUrl, {
@@ -84,9 +71,9 @@ chatForm.addEventListener("submit", async (e) => {
     // Log the response for debugging
     console.log("Received from worker:", data);
 
-    // Use the reply property, or fallback to other possible keys
+    // Extract the assistant's reply from OpenAI's response format
     const reply =
-      data.reply || data.result || data.text || "⚠️ No reply received.";
+      data.choices?.[0]?.message?.content || "⚠️ No reply received.";
 
     // Add the assistant's reply to the messages array
     messages.push({ role: "assistant", content: reply });
